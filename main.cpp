@@ -35,7 +35,7 @@ typedef void (*PRINTLN)();
 int main(int argc, char *argv[]) {
 	int i = 1;
 	// c++中，前缀结果是左值，后缀不是。c中前后缀都不是左值。
-	cout << "(++i)++: " << (++i)++ << ".\n";
+	cout << "(++)i++: " << (++i)++ << ".\n";
     //printCLIArgs(argc, argv);
     //stdIO();
     //inputLine();
