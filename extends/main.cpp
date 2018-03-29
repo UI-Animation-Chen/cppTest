@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
 	int *&rpi = pi;
 	cout << "rpi: " << rpi << ".\n";
 
-	int &*j;
+	//int &*j;
 
 	return 0;
 }
