@@ -49,6 +49,11 @@ int main(int argc, char *argv[]) {
 
 	int *ip = new int();
 	cout << "*ip:" << *ip << ".\n";
+
+	int arr[] = {1};
+	int (*parr)[1] = &arr;
+	cout << " arr:" << arr << ".\n";
+	cout << "parr:" << &arr << ".\n";
     
     return 0;
 }
