@@ -122,11 +122,27 @@ bool String::operator==(const String &s) {
 	return strcmp(this->rep->s, s.rep->s) == 0;
 }
 
+char String::read(int index) const {
+	return rep->s[index];
+	//return *(rep->s+index);
+}
 
+void String::write(int index, char c) {
+	rep = rep->get_own_copy();
+	rep->s[index] = c;
+}
 
+int String::size() const {
+	return rep->sz;
+}
 
+String::Cref String::operator[] (int i) {
+	return Cref(*this, i);
+}
 
-
+char String::operator[] (int i) const {
+	return rep->s[i];
+}
 
 
 

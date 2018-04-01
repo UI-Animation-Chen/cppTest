@@ -9,7 +9,15 @@ class String {
 	struct Srep;
 	Srep *rep;
 public:
-	class Cref;
+	class Cref {
+		friend class String; // all String mem fns.
+		String &s;
+		int i;
+		Cref(String &ss, int ii): s(ss), i(ii) {}
+	public:
+		operator char() const {return s.read(i);}
+		void operator= (char c) {s.write(i, c);}
+	};
 	
 	String();
 	String(const char *);
@@ -30,7 +38,21 @@ public:
 	// 当然也可以用成员函数形式。
 	bool operator==(const String &);
 	bool operator==(const char *);
+	
+	char read(int) const;
+	void write(int, char);
+	
+	Cref operator[] (int);
+	char operator[] (int) const;
+	
+	int size() const;
 };
 
 #endif //String_h
+
+
+
+
+
+
 
