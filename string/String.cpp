@@ -97,6 +97,7 @@ String & String::operator+=(const String &s) {
 
 ostream & operator<< (ostream &cout, const String &s) {
 	cout << s.rep->s;
+	return cout;
 }
 
 istream & operator>> (istream &cin, String &s) {
@@ -104,6 +105,7 @@ istream & operator>> (istream &cin, String &s) {
 	char cstr[len];
 	cin >> cstr; // cin will add a '\0' automatically.
 	s = cstr;
+	return cin;
 }
 
 bool operator==(const String &x, const String &y) {
