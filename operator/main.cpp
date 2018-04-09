@@ -1,6 +1,5 @@
 #include "FnObj.h"
 #include "PtrGen.h"
-#include "Subscript.h"
 
 #include<iostream>
 
@@ -15,11 +14,5 @@ int main(int argc, char *argv[]) {
 	pi++;
 	cout << "*pi.operator->():" << *pi.operator->() << ".\n";
 
-	Subscript ss;
-	ss.getI();
-
-	int i = 7;
-	const int &ir = i;
-	//ir++; // wrong.
 	return 0;
 }
