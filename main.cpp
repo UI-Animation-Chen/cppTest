@@ -7,6 +7,20 @@
 
 using namespace std;
 
+void quickSort() {
+    int count = 0;
+    int n = 8;
+    int arr[n];
+    for (int gap=n/2; 0<gap; gap/=2) {
+        for (int i=gap; i<n; i++) {
+            for (int j=i-gap; 0<=j; j-=gap) {
+                count++;
+            }
+        }
+    }
+    cout << "count:" << count << ".\n";
+}
+
 void inputLine() {
     cout << "please input a str:\n";
     string str;
@@ -14,26 +28,14 @@ void inputLine() {
     cout << "the str is:" << str << '\n';
 }
 
-class Fu {
-public:
-    virtual void print() {cout << "Fu\n";}
-};
-
-class Zi: public Fu {
-public:
-    //void print() {cout << "Zi\n";}
-};
-
 /**
  * typedef defines a type, not a variable, so can't be use as a variable.
  */
 typedef void (*PRINTLN)();
 
 int main(int argc, char *argv[]) {
-    
-    Zi z;
-    Fu &f = z;
-    f.print();
+
+    quickSort();
     
     //inputLine();
     //[](int i) -> void {cout << "closure i: " << i << ".\n";}(7);

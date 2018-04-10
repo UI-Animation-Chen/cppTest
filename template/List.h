@@ -6,6 +6,7 @@
 using namespace std;
 
 template<typename T> class List {
+    T t;
 public:
 	void add(T);
 };
