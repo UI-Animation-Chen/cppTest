@@ -7,6 +7,40 @@
 
 using namespace std;
 
+// 一维数组做函数参数时，编译器总是把它解析成一个指向其首元素的指针(不是常量)。
+// 实际传递的数组大小与形参指定的数组大小没关系。
+// 这里编译器把arr解析为指向int的指针，方括号中的数字根本不看。这里等价于int *arr;
+void printArr(int arr[], int len) {
+    cout << "[";
+    for (int i = 0; i < len; i++) {
+        cout << arr[i];
+        if (len == i+1) {
+            cout << "]\n";
+        } else {
+            cout << " ,";
+        }
+    }
+}
+
+void bubbleSort() {
+    int count = 0;
+    int n = 8;
+    int arr[] = {3, 2, 5, 4, 1, 0, 6, 7};
+    for (int i = 2; i < n; i++) {
+        for (int j = 0; j < n-i; j++) {
+            // cmp j and j+1
+            if (arr[j] > arr[j+1]) {
+                int tmp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = tmp;
+            }
+            count++;
+        }
+    }
+    cout << "count:" << count << ".\n";
+    printArr(arr, n);
+}
+
 void quickSort() {
     int count = 0;
     int n = 8;
@@ -35,7 +69,8 @@ typedef void (*PRINTLN)();
 
 int main(int argc, char *argv[]) {
 
-    quickSort();
+    bubbleSort();
+    //quickSort();
     
     //inputLine();
     //[](int i) -> void {cout << "closure i: " << i << ".\n";}(7);
