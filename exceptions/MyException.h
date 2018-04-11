@@ -5,6 +5,7 @@ class MyException {
 public:
 	MyException();
 	MyException(const MyException &);
+    ~MyException();
 	
 	MyException & operator=(const MyException &);
 };

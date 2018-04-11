@@ -12,7 +12,12 @@ MyException::MyException(const MyException &e) {
 	cout << "MyException assign\n";
 }
 
+MyException::~MyException() {
+    cout << "~MyException\n";
+}
+
 MyException & MyException::operator=(const MyException &e) {
 	cout << "MyException =\n";
+    return *this;
 }
 
