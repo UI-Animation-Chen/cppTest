@@ -17,7 +17,7 @@ void printArr(int arr[], int len) {
         if (len == i+1) {
             cout << "]\n";
         } else {
-            cout << " ,";
+            cout << ", ";
         }
     }
 }
