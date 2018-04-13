@@ -23,7 +23,29 @@ namespace czf {
 		}
 }}
 
+namespace UI {
+	class Text {
+	public:
+		char *text;
+	};
+}
+
+class Text {
+public:
+	int length;
+};
+
 int main(int argc, char *argv[]) {
 	int num = czf::getNum();
+	char c = 'a';
+	UI::Text t;
+	t.text = &c;
 	return 0;
 }
+
+
+
+
+
+
+
