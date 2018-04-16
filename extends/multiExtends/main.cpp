@@ -25,7 +25,7 @@ public:
 	};
 };
 
-class Z: virtual public S {
+class Z: /*virtual*/ public S {
 	virtual void show() {
 		cout << "Z.\n";
 	}
@@ -40,7 +40,7 @@ public:
 
 int main(int argc, char *argv[]) {
 	XYZ xyz;
-	S &s = xyz;
-	s.show();
+	//S &s = xyz;
+	//s.show();
 }
 
