@@ -6,8 +6,8 @@
 class Cat: public Animal {
 public:
 	Cat(string, int);
-	~Cat();
-	void speak();
+	virtual ~Cat();
+	virtual void speak();
 };
 
 #endif // Cat_h

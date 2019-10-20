@@ -1,7 +1,7 @@
 #ifndef Animal_h
 #define Animal_h
 
-#include<string>
+#include <string>
 
 using namespace std;
 
@@ -10,7 +10,7 @@ class Animal {
 	int age;
 public:
 	Animal(string, int);
-	~Animal();
+	virtual ~Animal();
 	string getName();
 	void setName(string);
 	int getAge();
