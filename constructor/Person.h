@@ -8,8 +8,8 @@ public:
 	static const int sci = 7;
 
 	Person();
-	Person(const Person&);
+	Person(const Person&); // 拷贝构造
 	~Person();
 
-	Person & operator=(const Person &p);
+	Person & operator=(const Person &p); // 赋值构造
 };

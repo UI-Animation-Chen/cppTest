@@ -5,10 +5,10 @@
 using namespace std;
 
 Hobby::Hobby(int size) {
-	cout << "Hobby.\n";
+	cout << "Hobby(int).\n";
 }
 
 Hobby::~Hobby() {
-	cout << "~Hobby.\n";
+	cout << "~Hobby().\n";
 }
 

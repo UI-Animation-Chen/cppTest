@@ -5,7 +5,7 @@
 using namespace std;
 
 Person::Person(): h(7), i(0) {
-	cout << "Person.\n";
+	cout << "Person().\n";
 }
 
 Person::Person(const Person &p): h(7), i(0) {
@@ -18,6 +18,6 @@ Person & Person::operator=(const Person &p) {
 }
 
 Person::~Person() {
-	cout << "~Person.\n";
+	cout << "~Person().\n";
 }
 
