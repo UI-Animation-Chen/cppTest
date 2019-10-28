@@ -22,7 +22,7 @@ void printArr(int arr[], int len) {
     }
 }
 
-void bubbleSort() {
+extern "C" void bubbleSort() {
     int count = 0;
     int n = 8;
     int arr[] = {3, 2, 5, 4, 1, 0, 6, 7};
@@ -69,6 +69,8 @@ typedef void (*PRINTLN)();
 
 int main(int argc, char *argv[]) {
 
+	const char *vShader[] = {"aa"};
+
     bubbleSort();
     //quickSort();
     
@@ -85,9 +87,4 @@ int main(int argc, char *argv[]) {
     
     return 0;
 }
-
-
-
-
-
 
