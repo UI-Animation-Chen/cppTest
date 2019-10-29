@@ -14,7 +14,7 @@ public:
 class B {
     int j;
 public:
-    B(int paramJ) {j = paramJ;}
+    explicit B(int paramJ) {j = paramJ;}
     friend int A::genI(B &b);
 };
 
@@ -24,7 +24,7 @@ int A::genI(B &b) {
 }
 
 int main(int argc, char *argv[]) {
-    A a(3);
+    A a = 3; // implicit constructor
     B b(4);
     int result = a.genI(b);
     cout << "result:" << result << ".\n";
