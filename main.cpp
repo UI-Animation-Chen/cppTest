@@ -2,8 +2,8 @@
  * c++ demo.
  */
 
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -22,29 +22,29 @@ void printArr(int arr[], int len) {
     }
 }
 
-extern "C" void bubbleSort() {
+void bubbleSort() {
     int count = 0;
-    int n = 8;
-    int arr[] = {3, 2, 5, 4, 1, 0, 6, 7};
-    for (int i = 2; i < n; i++) {
+    int n = 800;
+    //int arr[n] = {3, 2, 5, 4, 1, 0, 6, 7};
+    for (int i = 1; i < n; i++) {
         for (int j = 0; j < n-i; j++) {
             // cmp j and j+1
-            if (arr[j] > arr[j+1]) {
-                int tmp = arr[j];
-                arr[j] = arr[j+1];
-                arr[j+1] = tmp;
-            }
+            //if (arr[j] > arr[j+1]) {
+            //    int tmp = arr[j];
+            //    arr[j] = arr[j+1];
+            //    arr[j+1] = tmp;
+            //}
             count++;
         }
     }
-    cout << "count:" << count << ".\n";
-    printArr(arr, n);
+    cout << "bubble sort count:" << count << ".\n";
+    //printArr(arr, n);
 }
 
 void quickSort() {
     int count = 0;
-    int n = 8;
-    int arr[n];
+    int n = 800;
+    //int arr[n];
     for (int gap=n/2; 0<gap; gap/=2) {
         for (int i=gap; i<n; i++) {
             for (int j=i-gap; 0<=j; j-=gap) {
@@ -52,7 +52,7 @@ void quickSort() {
             }
         }
     }
-    cout << "count:" << count << ".\n";
+    cout << "quick sort count:" << count << ".\n";
 }
 
 void inputLine() {
@@ -68,12 +68,8 @@ void inputLine() {
 typedef void (*PRINTLN)();
 
 int main(int argc, char *argv[]) {
-
-	const char *vShader[] = {"aa"};
-	printf("str: %s\n", vShader[0]);
-
     bubbleSort();
-    //quickSort();
+    quickSort();
     
     //inputLine();
     //[](int i) -> void {cout << "closure i: " << i << ".\n";}(7);
@@ -81,10 +77,10 @@ int main(int argc, char *argv[]) {
     //PRINTLN println = inputLine;
     //println();
 
-	//int arr[] = {1};
-	//int (*parr)[1] = &arr; // 指向数组的指针。
-	//cout << " arr:" << arr << ".\n";
-	//cout << "parr:" << &arr << ".\n";
+    //int arr[] = {1};
+    //int (*parr)[1] = &arr; // 指向数组的指针。
+    //cout << " arr:" << arr << ".\n";
+    //cout << "parr:" << &arr << ".\n";
     
     return 0;
 }
