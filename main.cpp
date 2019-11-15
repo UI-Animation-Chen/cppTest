@@ -72,6 +72,11 @@ int main(int argc, char *argv[]) {
 	const char *vShader[] = {"aa"};
 	printf("str: %s\n", vShader[0]);
 
+	char *null = nullptr;
+	if (!null) {
+		printf("---===: %d\n", null);
+	}
+
     bubbleSort();
     //quickSort();
     
