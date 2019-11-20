@@ -63,18 +63,18 @@ void inputLine() {
 }
 
 /**
- * typedef defines a type, not a variable, so can't be use as a variable.
+ * typedef defines a type, not a variable, so can't be used as a variable.
  */
 typedef void (*PRINTLN)();
 
 int main(int argc, char *argv[]) {
-
-	const char *vShader[] = {"aa"};
-	printf("str: %s\n", vShader[0]);
+	string *str = new string("czf");
+	cout << "size: " << sizeof(*str) << ", " << *str << endl;
+	free(str);
 
 	char *null = nullptr;
 	if (!null) {
-		printf("---===: %d\n", null);
+		cout << "nullptr is false" << endl;
 	}
 
     bubbleSort();

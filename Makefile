@@ -1,4 +1,3 @@
-main: main.o
+main: main.cpp
 	g++ main.cpp -o main
-main.o: main.cpp
-	g++ -c main.cpp -o main.o
+
