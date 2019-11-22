@@ -68,17 +68,22 @@ void inputLine() {
 typedef void (*PRINTLN)();
 
 int main(int argc, char *argv[]) {
-	string *str = new string("czf");
-	cout << "size: " << sizeof(*str) << ", " << *str << endl;
-	free(str);
+	char num_str[] = "123e2", *after_end;
+	int num = strtod(num_str, (char **)&after_end);
+	cout << "num:" << num << "." << endl;
+	cout << "after_end:" << *after_end << "." << endl;
+	cout << "numstr:" << num_str << "." << endl;
+	cout << "offset:" << after_end - num_str << "." << endl;
 
+	/*
 	char *null = nullptr;
 	if (!null) {
 		cout << "nullptr is false" << endl;
 	}
+	*/
 
-    bubbleSort();
-    quickSort();
+    //bubbleSort();
+    //quickSort();
     
     //inputLine();
     //[](int i) -> void {cout << "closure i: " << i << ".\n";}(7);
