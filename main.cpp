@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+#include <utility> // std::move
 
 using namespace std;
 
@@ -74,6 +75,11 @@ int main(int argc, char *argv[]) {
 	cout << "after_end:" << *after_end << "." << endl;
 	cout << "numstr:" << num_str << "." << endl;
 	cout << "offset:" << after_end - num_str << "." << endl;
+
+    string str = "Hello, world";
+    string str1 = move(str);
+    str1 = "hello";
+    cout << "str: " << str << ", str1: " << str1 << endl;
 
 	/*
 	char *null = nullptr;
