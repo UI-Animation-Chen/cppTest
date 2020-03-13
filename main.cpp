@@ -56,6 +56,29 @@ void quickSort() {
     cout << "quick sort count:" << count << ".\n";
 }
 
+void shuffle() {
+    int len = 10;
+    int arr[len];
+    for (int i = 0; i < len; i++) {
+        arr[i] = i;
+    }
+
+    printf("rand_max: %d\n", RAND_MAX);
+
+    for (int i = len - 1; i >= 0; i--) {
+        // len - (len - 1 - i) : len -> 1
+        int rand_index = rand() % (len - (len - 1 - i));
+        int tmp = arr[i];
+        arr[i] = arr[rand_index];
+        arr[rand_index] = tmp;
+    }
+
+    for (int i = 0; i < len; i++) {
+        printf("%d, ", arr[i]);
+    }
+    printf("\n");
+}
+
 void inputLine() {
     cout << "please input a str:\n";
     string str;
@@ -69,17 +92,34 @@ void inputLine() {
 typedef void (*PRINTLN)();
 
 int main(int argc, char *argv[]) {
+
+    shuffle();
+
+    /*
 	char num_str[] = "123e2", *after_end;
-	int num = strtod(num_str, (char **)&after_end);
+	int num = strtod(num_str, &after_end);
 	cout << "num:" << num << "." << endl;
 	cout << "after_end:" << *after_end << "." << endl;
 	cout << "numstr:" << num_str << "." << endl;
 	cout << "offset:" << after_end - num_str << "." << endl;
+    */
 
+    /*
     string str = "Hello, world";
     string str1 = move(str);
     str1 = "hello";
     cout << "str: " << str << ", str1: " << str1 << endl;
+    */
+
+    /*
+    signed char sc = 1; // 补码为0000 0001
+    // ~sc: 针对sc的补码取反得1111 1110
+    // 反码(-1) - 原码：1111 1101 -> 1000 0010 -> -2
+    cout << "sc: " << ~sc << endl;
+    // 取-1的补码，不管左边变量是什么类型，直接接收这个二进制形式。
+    unsigned int ui = -1;
+    printf("ui: %ud\n", ui);
+    */
 
 	/*
 	char *null = nullptr;
