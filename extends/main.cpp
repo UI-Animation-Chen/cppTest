@@ -6,9 +6,9 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
 	Cat *c = new SmallCat("xiaomi", 1);
-	Animal *a = c;
-	a->speak();
-	delete a;
+	//Animal *a = c;
+	//a->speak();
+	delete c;
 
 	/*
 	int i = 7;
