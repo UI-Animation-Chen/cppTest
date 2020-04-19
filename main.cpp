@@ -93,7 +93,12 @@ typedef void (*PRINTLN)();
 
 int main(int argc, char *argv[]) {
 
-    shuffle();
+    char c = (char)255; // 255的低8位都是1，不管赋给什么类型，二进制位都不会变化。
+                        // 也就是c这个变量不管是什么类型，低8位都是1。
+    printf("c: %d\n", (signed char)c);
+    printf("c: %d\n", (unsigned char)c);
+
+    // shuffle();
 
     /*
 	char num_str[] = "123e2", *after_end;
