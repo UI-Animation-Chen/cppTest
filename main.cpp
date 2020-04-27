@@ -98,6 +98,11 @@ int main(int argc, char *argv[]) {
     printf("c: %d\n", (signed char)c);
     printf("c: %d\n", (unsigned char)c);
 
+    // 在运算之前，如果有不同的符号，首先全部转成无符号。
+    int i = -1;
+    unsigned int ui = 1;
+    cout << i << " > " << ui << " : "  << (i > ui) << endl;
+
     // shuffle();
 
     /*
