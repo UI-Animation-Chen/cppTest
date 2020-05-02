@@ -91,8 +91,23 @@ void inputLine() {
  */
 typedef void (*PRINTLN)();
 
+/**
+ * macros:
+ * ##: 连接两边内容
+ * #:  将后面的内容两边加上双引号，转为字符串
+ * #@: 将后面的内容两边加上单引号，转为字符
+ */
+#define Connect(x,y) x##y
+#define ToString(x) #x
+//#define ToChar(x) #@x // 编译器不支持？？？
+
 int main(int argc, char *argv[]) {
 
+    cout << "1##2: " << Connect(1, 2) << endl;
+    cout << "#123+1: " << ToString(123) + 1 << endl;
+//    cout << "#@x:" << ToChar(2) << endl;
+
+    /*
     char c = (char)255; // 255的低8位都是1，不管赋给什么类型，二进制位都不会变化。
                         // 也就是c这个变量不管是什么类型，低8位都是1。
     printf("c: %d\n", (signed char)c);
@@ -102,6 +117,7 @@ int main(int argc, char *argv[]) {
     int i = -1;
     unsigned int ui = 1;
     cout << i << " > " << ui << " : "  << (i > ui) << endl;
+    */
 
     // shuffle();
 
