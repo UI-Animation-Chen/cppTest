@@ -5,6 +5,12 @@
 #include <iostream>
 #include <string>
 #include <utility> // std::move
+#include <memory> // shared_ptr, unique_ptr
+#include "Cat.h"
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -101,10 +107,80 @@ typedef void (*PRINTLN)();
 #define ToString(x) #x
 //#define ToChar(x) #@x // 编译器不支持？？？
 
-int main(int argc, char *argv[]) {
+/**
+ * 通过函数重载验证这个值是被当左值还是右值处理。
+ * std::move
+ */
+void processValue(int &i) {
+    cout << "left value: " << i << endl;
+}
+void processValue(int &&i) {
+    cout << "right value: " << i << endl;
+}
 
+/**
+ * 父子进程共享文件，读写位置(pos)也会共享。
+ */
+void shareFileInChildProc() {
+    int fd;
+    int c;
+
+    fd = open("./Cat.h", O_RDONLY, O_APPEND);
+    if (fd < 0) {
+        cout << "open file: notes.h err, errmsg: " << strerror(errno) << endl;
+        return;
+    } else {
+        cout << "fd: " << fd << endl;
+    }
+
+    if (fork() == 0) {
+        read(fd, &c, 1);
+        char ch = c;
+        cout << "child:" << ch << endl;
+        close(fd);
+        return;
+    }
+
+    read(fd, &c, 1);
+    char ch = c;
+    cout << "parent:" << ch << endl;
+    close(fd);
+}
+
+int main(int argc, char *argv[]) {
+    shareFileInChildProc();
+
+    /*
+    shared_ptr<Cat> pCat = make_shared<Cat>();
+
+    shared_ptr<Cat> *pCat1 = (shared_ptr<Cat> *)malloc(sizeof(shared_ptr<Cat>));
+    *pCat1 = pCat;
+
+    // *pCat1 = nullptr;
+    pCat1->reset();
+
+    free(pCat1);
+    pCat1 = nullptr;
+    */
+
+    /*
+    unique_ptr<Cat> puCat = unique_ptr<Cat>(new Cat());
+    unique_ptr<Cat> &puCat1 = puCat;
+    puCat = nullptr;
+
+    cout << "---" << endl;
+    */
+
+    /*
+    int i = 7;
+    int &j = i;
+    processValue(j);
+    processValue(move(j));
+    */
+
+    /*
     cout << "1##2: " << Connect(1, 2) << endl;
-    cout << "#123+1: " << ToString(123) + 1 << endl;
+    cout << "#123+1: " << ToString(123) + 1 << endl; */
 //    cout << "#@x:" << ToChar(2) << endl;
 
     /*
