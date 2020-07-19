@@ -148,9 +148,18 @@ void shareFileInChildProc() {
 }
 
 int main(int argc, char *argv[]) {
-    shareFileInChildProc();
+    //shareFileInChildProc();
 
     /*
+    Cat c;
+    Cat c1;
+    c1 = std::move(c);
+    const Cat &c2 = std::move(c1);
+    */
+
+    /*
+    // 智能指针shared_ptr表示可以有多个变量指向同一个对象
+    // 因此，该指针变量本身可以被拷贝
     shared_ptr<Cat> pCat = make_shared<Cat>();
 
     shared_ptr<Cat> *pCat1 = (shared_ptr<Cat> *)malloc(sizeof(shared_ptr<Cat>));
@@ -163,13 +172,14 @@ int main(int argc, char *argv[]) {
     pCat1 = nullptr;
     */
 
-    /*
+    // 智能指针unique_ptr表示只能有一个变量指向该对象
+    // 因此，该指针变量本身不能被拷贝，只能移动
     unique_ptr<Cat> puCat = unique_ptr<Cat>(new Cat());
-    unique_ptr<Cat> &puCat1 = puCat;
-    puCat = nullptr;
+    // unique_ptr<Cat> puCat1 = puCat; // err，不能被拷贝
+    unique_ptr<Cat> puCat1 = move(puCat); // ok，可以移动
+    puCat = nullptr; // 移动后，puCat不再关联对象，置为nullptr也不会销毁对象。
 
     cout << "---" << endl;
-    */
 
     /*
     int i = 7;
