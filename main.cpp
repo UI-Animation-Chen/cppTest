@@ -147,7 +147,18 @@ void shareFileInChildProc() {
     close(fd);
 }
 
+template<typename... ARGS>
+inline void my_log(const char *format_str, ARGS... args) noexcept {
+    printf(format_str, args...);
+}
+
 int main(int argc, char *argv[]) {
+#ifdef MACRO_FROM_CMD
+    cout << "macro from cmd" << endl;
+#endif
+
+    // my_log("--==-- %d\n", 7);
+
     //shareFileInChildProc();
 
     /*
