@@ -152,7 +152,17 @@ inline void my_log(const char *format_str, ARGS... args) noexcept {
     printf(format_str, args...);
 }
 
+/**
+ * constexpr表示编译期就能计算求值的表达式。
+ */
+constexpr int get_const_int(int a) {
+	return a * a;
+}
+
 int main(int argc, char *argv[]) {
+	constexpr int d = get_const_int(7);
+	cout << "constexpr: " << d << endl;
+
 #ifdef MACRO_FROM_CMD
     cout << "macro from cmd" << endl;
 #endif
