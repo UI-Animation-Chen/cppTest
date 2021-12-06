@@ -37,6 +37,19 @@
  
  ::是作用域解析运算符。
  被遮蔽的全局变量可以用::去引用，局部变量没办法。
+ 当::前面没有前缀时，表示从全局作用域寻找变量，如：
+     int a = 10;
+     namespace N
+     {
+         int a = 100;
+         void f()
+         {
+              int a = 1000;
+              std::cout << a << std::endl;    //prints 1000
+              std::cout << N::a << std::endl; //prints 100 
+              std::cout << ::a << std::endl;  //prints 10
+         }
+     }
  
  函数参数被当作在函数最外层的块中声明的变量。
  void function(int x) {//这里就是函数最外层的块。}
