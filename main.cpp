@@ -159,6 +159,28 @@ constexpr int get_const_int(int a) {
 	return a * a;
 }
 
+class Input {
+public:
+    Input() {
+        cout << "input constructor" << endl;
+    }
+    ~Input() {
+        cout << "input ~destructor" << endl;
+    }
+};
+class NativeInput {
+public:
+    NativeInput(unique_ptr<Input> i) {
+        input = move(i);
+        cout << "NativeInput constructor" << endl;
+    }
+    ~NativeInput() {
+        cout << "NativeInput ~destructor" << endl;
+    }
+private:
+    unique_ptr<Input> input;
+};
+
 int main(int argc, char *argv[]) {
 	constexpr int d = get_const_int(7);
 	cout << "constexpr: " << d << endl;
@@ -166,6 +188,9 @@ int main(int argc, char *argv[]) {
 #ifdef MACRO_FROM_CMD
     cout << "macro from cmd" << endl;
 #endif
+
+    NativeInput *n = new NativeInput(unique_ptr<Input>(new Input()));
+    delete n;
 
     // my_log("--==-- %d\n", 7);
 
