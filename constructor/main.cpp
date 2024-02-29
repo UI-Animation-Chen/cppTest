@@ -1,6 +1,7 @@
 #include<iostream>
 
 #include "Person.h"
+#include "Czf.h"
 
 using namespace std;
 
@@ -11,6 +12,7 @@ Person getP() {
 }
 
 int main() {
+/*
 	// 这种情况编译器会进行优化，并没有创建新对象来接收函数返回值，而是直接
 	// 将这个匿名对象扶正。总之，这里只创建了一个对象。
 	Person p = getP();
@@ -21,6 +23,10 @@ int main() {
 	p1 = p; // 赋值构造
 
 	Person p2 = p; // 拷贝构造
+*/
+    Person *p3 = new Czf();
+    delete p3;
+
 	return 0;
 }
 

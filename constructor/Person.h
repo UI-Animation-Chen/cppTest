@@ -1,3 +1,6 @@
+#ifndef PERSON_H
+#define PERSON_H
+
 #include "Hobby.h"
 
 class Person {
@@ -9,7 +12,10 @@ public:
 
 	Person();
 	Person(const Person&); // 拷贝构造
-	~Person();
+	virtual ~Person();
 
 	Person & operator=(const Person &p); // 赋值构造
 };
+
+#endif // PERSON_H
+

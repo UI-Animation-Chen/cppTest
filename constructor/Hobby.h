@@ -1,5 +1,11 @@
+#ifndef HOBBY_H
+#define HOBBY_H
+
 class Hobby {
 public:
 	Hobby(int);
-	~Hobby();	
+	virtual ~Hobby();
 };
+
+#endif // HOBBY_H
+

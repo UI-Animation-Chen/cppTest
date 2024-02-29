@@ -11,6 +11,10 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <vector>
+#include <map>
+#include <unordered_map>
+#include <sys/time.h>
 
 using namespace std;
 
@@ -181,7 +185,20 @@ private:
     unique_ptr<Input> input;
 };
 
+long get_curr_usec() {
+    struct timeval curr_time;
+    gettimeofday(&curr_time, NULL);
+    return (curr_time.tv_sec * 1000000 + curr_time.tv_usec);
+    //return 0L;
+}
+
 int main(int argc, char *argv[]) {
+    unordered_map<int, vector<int>> m1;
+    printf("exist: %lu\n", m1.count(1));
+    m1[1].push_back(7);
+    printf("exist: %lu\n", m1.count(1));
+    printf("m1[1].at(0): %d\n", m1[1].at(0));
+
 	constexpr int d = get_const_int(7);
 	cout << "constexpr: " << d << endl;
 
