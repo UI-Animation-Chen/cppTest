@@ -168,7 +168,7 @@ public:
     Input() {
         cout << "input constructor" << endl;
     }
-    ~Input() {
+    virtual ~Input() {
         cout << "input ~destructor" << endl;
     }
 };
@@ -178,7 +178,7 @@ public:
         input = move(i);
         cout << "NativeInput constructor" << endl;
     }
-    ~NativeInput() {
+    virtual ~NativeInput() {
         cout << "NativeInput ~destructor" << endl;
     }
 private:
@@ -193,11 +193,14 @@ long get_curr_usec() {
 }
 
 int main(int argc, char *argv[]) {
+/*
+    // 无顺序map
     unordered_map<int, vector<int>> m1;
     printf("exist: %lu\n", m1.count(1));
     m1[1].push_back(7);
     printf("exist: %lu\n", m1.count(1));
     printf("m1[1].at(0): %d\n", m1[1].at(0));
+*/
 
 	constexpr int d = get_const_int(7);
 	cout << "constexpr: " << d << endl;
@@ -208,6 +211,17 @@ int main(int argc, char *argv[]) {
 
     NativeInput *n = new NativeInput(unique_ptr<Input>(new Input()));
     delete n;
+
+/*
+    // 引用可以看为变量的别名，底层通过指针实现。只能初始化一次，不能再次引用别的变量
+    int num1 = 7;
+    int &ref = num1; // ref引用住num1
+    int num2 = 8;
+    ref = num2; // 不是引用num2，只是将num2的值赋值给ref
+    cout << "num1: " << num1 << ", num2: " << num2 << endl;
+    ref = 77;
+    cout << "num1: " << num1 << ", num2: " << num2 << endl;
+*/
 
     // my_log("--==-- %d\n", 7);
 
@@ -235,14 +249,14 @@ int main(int argc, char *argv[]) {
     pCat1 = nullptr;
     */
 
+/*
     // 智能指针unique_ptr表示只能有一个变量指向该对象
     // 因此，该指针变量本身不能被拷贝，只能移动
     unique_ptr<Cat> puCat = unique_ptr<Cat>(new Cat());
     // unique_ptr<Cat> puCat1 = puCat; // err，不能被拷贝
     unique_ptr<Cat> puCat1 = move(puCat); // ok，可以移动
     puCat = nullptr; // 移动后，puCat不再关联对象，置为nullptr也不会销毁对象。
-
-    cout << "---" << endl;
+*/
 
     /*
     int i = 7;
